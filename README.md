@@ -3,8 +3,15 @@
 ## 1. Environment Setup
 
 Create and activate a virtual environment:
+```
 python -m venv venv
-source venv/bin/activate  # On Windows: venv\Scripts\activate
+source venv/bin/activate  
+```
+On Windows: 
+```
+venv\Scripts\activate
+```
+
 
 Install dependencies:
 ```
@@ -14,15 +21,24 @@ Create a .env file with your API keys:
 ```
 SERPAPI_API_KEY=your_serp_api_key
 GROQ_API_KEY=your_groq_api_key
+PISTE_API_CLIENT_ID=your_piste_api_client_id
+PISTE_API_CLIENT_SECRET=your_piste_api_client_secret
+HOST=your_host_for_fast_api_server
+PORT= your_port_for_fast_api_server
 ```
 
 ## 2. Initial Commands
+
+Extract codes and articles using pylegifrance 
+```
+python extractor.py
+```
 
 List available law codes:
 ```
 python main.py --mode list-codes
 ```
-Build indices for all available law codes:
+Build indices (stored in data/indices) for all available law codes:
 ```
 python main.py --mode build-indices
 ```

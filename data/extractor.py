@@ -1,3 +1,4 @@
+# data/extractor.py
 import os
 import nest_asyncio
 import asyncio
@@ -39,7 +40,7 @@ async def fetch_and_save_code(code_name):
 
 
 async def main():
-    tasks = [fetch_and_save_code(code) for code in codes]
+    tasks = [fetch_and_save_code(code) for code in CODES]
     await asyncio.gather(*tasks)
 
 

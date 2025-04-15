@@ -1,23 +1,35 @@
 
 # Core dependencies
-langchain>=0.1.0
-transformers>=4.30.0
-faiss-cpu>=1.7.4
-groq>=0.4.0
-python-dotenv>=1.0.0
-sentence-transformers>=2.3.0
-torch>=2.0.0
+langchain== 0.3.23
+transformers==4.51.3
+faiss-cpu== 1.10.0
+groq==0.22.0
+python-dotenv==1.0.0
+sentence-transformers==4.0.2
+torch==2.6.0
+async_timeout==5.0.1
+langchain_community==0.3.21
+langchain_huggingface==0.1.2
+nest_asyncio==1.6.0
+
+# Data Extaction
+git+https://github.com/rdassignies/pylegifrance.git@main
+
 
 # API dependencies
-fastapi>=0.103.1
-uvicorn>=0.23.2
-pydantic>=2.3.0
+fastapi==0.115.12
+uvicorn==0.34.1
+pydantic==2.11.3
 
 # UI dependencies
-gradio>=4.8.0
+gradio==5.25.0
 
 # Search dependencies
-google-search-results>=2.4.2
+google-search-results==2.4.2
+serpapi== 0.1.5
 
-# Data handling
-datasets>=2.14.0
+# Testing
+pytest==8.3.5
+
+# Caching and Monitoring
+redis==5.2.1

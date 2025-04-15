@@ -9,15 +9,16 @@ from config import (
     DEFAULT_TEMPERATURE,
     DEFAULT_MAX_TOKENS,
 )
+from pydantic import Field
 
 
 class GroqLLM(LLM):
     """Custom LLM wrapper for Groq API."""
 
-    model: str = DEFAULT_MODEL
-    temperature: float = DEFAULT_TEMPERATURE
-    max_tokens: int = DEFAULT_MAX_TOKENS
-    api_key: Optional[str] = None
+    model: str = Field(default=DEFAULT_MODEL)
+    temperature: float = Field(default=DEFAULT_TEMPERATURE)
+    max_tokens: int = Field(default=DEFAULT_MAX_TOKENS)
+    api_key: Optional[str] = Field(default=None)
 
     def _call(self, prompt: str, stop: Optional[List[str]] = None, **kwargs) -> str:
         """

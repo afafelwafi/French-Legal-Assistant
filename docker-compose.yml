@@ -1,0 +1,40 @@
+version: '3.8'
+
+services:
+  api:
+    build: .
+    ports:
+      - "8000:8000"
+    environment:
+      - REDIS_HOST=redis
+      - REDIS_PORT=6379
+      - LOG_LEVEL=INFO
+    volumes:
+      - ./data/law_codes:/app/data/law_codes
+      - ./data/indices:/app/data/indices
+    depends_on:
+      - redis
+    command: python main.py --mode api --host 0.0.0.0 --port 8000
+    restart: unless-stopped
+
+  ui:
+    build: .
+    ports:
+      - "7860:7860"
+    environment:
+      - API_URL=http://api:8000
+    depends_on:
+      - api
+    command: python main.py --mode ui --host 0.0.0.0
+    restart: unless-stopped
+
+  redis:
+    image: redis:7-alpine
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis-data:/data
+    restart: unless-stopped
+
+volumes:
+  redis-data:
